@@ -1,5 +1,19 @@
 <html>
     <body>
         <h1>Hej värden!</h1>
+        <img id="mainImg" src="/static/current.jpg">
+
+        <script>
+            function reloadImage() {
+                // Get the image element
+                var image = document.getElementById('mainImg');
+                
+                // Append a timestamp to the image source to force a new request
+                image.src = "/static/current.jpg?" + new Date().getTime();
+            }
+
+            // Call reloadImage every 3 seconds
+            setInterval(reloadImage, 3000);
+        </script>
     </body>
 </html>
