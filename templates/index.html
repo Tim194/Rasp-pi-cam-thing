@@ -10,7 +10,7 @@
                 var newImage = new Image();
 
                 // Set the source of the new image with a timestamp to force a new request
-                newImage.src = "/static/current.jpg" + new Date().getTime();
+                newImage.src = "/static/current.jpg?" + new Date().getTime();
 
                 // Once the new image is fully loaded, update the displayed image
                 newImage.onload = function() {
