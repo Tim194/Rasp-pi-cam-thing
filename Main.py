@@ -27,7 +27,7 @@ def runCam():
         time.sleep(fpsThing)
 
         #rename the old photo to when it was taken and so it dose not get overwriten.
-        os.rename("static/current.jpg", "static/" + str(time.time()) + ".jpg")
+        os.rename("static/current.jpg", "static/" + str(int(time.time())) + ".jpg")
 
         #---- To Do ----
         #Delite to old photos
