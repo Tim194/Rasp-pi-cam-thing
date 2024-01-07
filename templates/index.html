@@ -4,12 +4,22 @@
         <img id="mainImg" src="/static/current.jpg">
 
         <script>
+
             function reloadImage() {
-                // Get the image element
-                var image = document.getElementById('mainImg');
-                
-                // Append a timestamp to the image source to force a new request
-                image.src = "/static/current.jpg?" + new Date().getTime();
+            // Create a new image element
+                var newImage = new Image();
+
+                // Set the source of the new image with a timestamp to force a new request
+                newImage.src = "/static/current.jpg" + new Date().getTime();
+
+                // Once the new image is fully loaded, update the displayed image
+                newImage.onload = function() {
+                    // Get the displayed image element
+                    var displayedImage = document.getElementById('mainImg');
+
+                    // Update the source of the displayed image
+                    displayedImage.src = newImage.src;
+                };
             }
 
             // Call reloadImage every 3 seconds
