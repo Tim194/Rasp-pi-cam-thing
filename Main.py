@@ -1,19 +1,21 @@
 from flask import Flask, render_template
-import picamera
+#import picamera
 import time
 import os
 import threading
 
 app = Flask(__name__)
 
+fpsThing = 3
+
 def capture_photo(file_path):
     # Create a PiCamera object
-    with picamera.PiCamera() as camera:
+    #with picamera.PiCamera() as camera:
         # Wait for the camera to warm up
-        time.sleep(2)
+        time.sleep(fpsThing*0.9)
 
         # Capture a photo and save it to the specified file path
-        camera.capture(file_path)
+        #camera.capture(file_path)
         print("Photo saved")
 
 def runCam():
@@ -22,7 +24,7 @@ def runCam():
         capture_photo("static/current.jpg")
 
         #Wait for the photo to be taken
-        time.sleep(3)
+        time.sleep(fpsThing)
 
         #rename the old photo to when it was taken and so it dose not get overwriten.
         os.rename("static/current.jpg", "static/" + str(time.time()) + ".jpg")
@@ -33,7 +35,7 @@ def runCam():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", fpsThing=fpsThing)
 
 
 #Create and run cam thread
