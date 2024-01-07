@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-#import picamera
+import picamera
 import time
 import os
 import threading
@@ -10,15 +10,16 @@ fpsThing = 3
 
 def capture_photo(file_path):
     # Create a PiCamera object
-    #with picamera.PiCamera() as camera:
+    with picamera.PiCamera() as camera:
         # Wait for the camera to warm up
         time.sleep(fpsThing*0.5)
 
         # Capture a photo and save it to the specified file path
-        #camera.capture(file_path)
+        camera.capture(file_path)
         print("Photo saved")
 
 def runCam():
+    print("Strating photo thread")
     while True:
         #Take photo. Can take up to 2 sekunds
         capture_photo("static/current.jpg")
