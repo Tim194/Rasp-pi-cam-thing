@@ -12,7 +12,7 @@ def capture_photo(file_path):
     # Create a PiCamera object
     #with picamera.PiCamera() as camera:
         # Wait for the camera to warm up
-        time.sleep(fpsThing*0.9)
+        time.sleep(fpsThing*0.5)
 
         # Capture a photo and save it to the specified file path
         #camera.capture(file_path)
